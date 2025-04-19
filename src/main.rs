@@ -49,20 +49,20 @@ async fn main() -> Result<()> {
                     sqrtPriceX96,
                     liquidity,
                     tick,
-                } = swap_event; //log.log_decode()?.inner.data;
-
-                sql_handler
-                    .insert_raw_event(
-                        log.block_number.unwrap(),
-                        log.block_timestamp.unwrap(),
-                        log.transaction_hash.unwrap().to_string(),
-                        swap_event,
-                    )
-                    .await?;
+                } = swap_event;
 
                 println!(
                     "Swap from {sender} to {recipient} of value {amount0} and {amount1} at {sqrtPriceX96} with {liquidity} at {tick}"
                 );
+
+                // timestamps are inconsistent/null? not collected for poc
+                sql_handler
+                    .insert_raw_event(
+                        log.block_number.unwrap(),
+                        log.transaction_hash.unwrap().to_string(),
+                        swap_event,
+                    )
+                    .await?;
             }
             _ => {}
         }
