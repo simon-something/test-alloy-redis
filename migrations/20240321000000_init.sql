@@ -5,7 +5,7 @@ CREATE TABLE `swap_raw` (
   `recipient` varchar(42) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
   `amount0` bigint,
   `amount1` bigint,
-  `sqrtPriceX96` DECIMAL(38,0),
+  `sqrtPriceX96` varchar(80) CHARACTER SET ascii COLLATE ascii_general_ci,
   `liquidity` bigint,
   `tick` int,
   PRIMARY KEY (`block_number`, `transaction_hash`)

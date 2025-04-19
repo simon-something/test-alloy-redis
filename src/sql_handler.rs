@@ -21,7 +21,10 @@ pub struct Sql_Handler {
 impl Sql_Handler {
     pub async fn new() -> Result<Self> {
         let database_url = std::env::var("MYSQL_DSN").expect("MYSQL_DSN must be set");
-        let connection = MySqlConnection::connect(&database_url).await?;
+        let mut connection = MySqlConnection::connect(&database_url).await?;
+
+        #[cfg(feature = "migrate")]
+        sqlx::migrate!("./migrations").run(&mut connection).await?;
 
         Ok(Self { connection })
     }

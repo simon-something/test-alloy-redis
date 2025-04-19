@@ -3,6 +3,11 @@ name = "rust_indexer"
 version = "0.1.0"
 edition = "2024"
 
+[features]
+default = []
+migrate = []      
+all = ["migrate"]
+
 [dependencies]
 alloy = { version = "0.14", features = [
     "eips",
