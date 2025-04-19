@@ -25,5 +25,7 @@ eyre = "0.6.12"
 future-utils = "0.12.1"
 futures-util = "0.3.31"
 redis = "0.29.5"
+runtime-tokio = "0.0.0"
+sqlx = { version = "0.8.5", features = ["runtime-tokio-rustls", "mysql"] }
 tokio = { version = "1.44.2", features = ["full", "rt-multi-thread"] }
 uniswap-v3-sdk = "4.2.0"
