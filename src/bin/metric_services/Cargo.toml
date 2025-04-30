@@ -8,12 +8,6 @@ default = []
 migrate = []      
 all = ["migrate"]
 
-[[bin]]
-name = "indexer"
-
-[[bin]]
-name = "metric_services"
-
 [dependencies]
 alloy = { version = "0.14", features = [
     "eips",
